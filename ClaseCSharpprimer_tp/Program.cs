@@ -1,2 +1,5 @@
-﻿//cambio hecho  por dario
-Console.WriteLine("Cambio de prueba 2");
+﻿public interface ITransferible
+{
+    void Retirar();
+}
+abstract class Cuenta(){}
