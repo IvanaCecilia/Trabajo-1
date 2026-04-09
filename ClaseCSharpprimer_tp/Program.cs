@@ -1,17 +1,28 @@
-﻿
-// fin main
+﻿// fin main
 public interface ITransferible
 {
-    void Retirar();
+    public void Retirar();
 }
-abstract class Cuenta(){}
-
-class CuentaCorriente : Cuenta, ITransferible(){
-
+abstract class Cuenta : ITransferible
+{
+    public void Retirar()
+    {
+        Console.WriteLine("cuenta");
+    }
 }
 
-class CajaAhorros : Cuenta, ITransferible (){
+class CuentaCorriente : Cuenta{
+    void Retirar()
+    {
+        Console.WriteLine("corriente");
+    }
+}
 
+class CajaAhorros : Cuenta{
+    void Retirar()
+    {
+        Console.WriteLine("ahorros");
+    }
 }
 
 class Banco (){
