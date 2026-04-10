@@ -11,20 +11,20 @@ abstract class Cuenta : ITransferible
     }
 }
 
-class CuentaCorriente : Cuenta{
+class CuentaCorriente : Cuenta, ITransferible{
     void Retirar()
     {
         Console.WriteLine("corriente");
     }
 }
 
-class CajaAhorros : Cuenta{
+class CajaAhorros : Cuenta, ITransferible{
     void Retirar()
     {
         Console.WriteLine("ahorros");
     }
 }
 
-class Banco (){
+class Banco {
 
 }
