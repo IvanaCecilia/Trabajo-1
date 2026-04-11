@@ -35,5 +35,8 @@ class CajaAhorros : Cuenta, ITransferible{
 }
 
 class Banco {
-
+    void Transferir(ITransferible cuenta)
+    {
+        cuenta.Retirar();
+    }
 }
