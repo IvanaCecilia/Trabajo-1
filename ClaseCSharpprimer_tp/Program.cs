@@ -1,7 +1,7 @@
 ﻿// fin main
 public interface ITransferible
 {
-    public void Retirar();
+    public void Retirar(decimal retiro);
 }
 abstract class Cuenta : ITransferible
 {
@@ -10,20 +10,18 @@ abstract class Cuenta : ITransferible
     {
         id=+1;
     }
-    public void Retirar()
-    {
-        Console.WriteLine("cuenta");
-    }
+    public abstract void Retirar(decimal retiro);
+    public abstract void Depositar(decimal deposito);
 }
 
 class CuentaCorriente : Cuenta, ITransferible{
     decimal saldo=0;
-    string nombre;
-    CuentaCorriente(string Nombre)
+    public string nombre;
+    public CuentaCorriente(string Nombre)
     {
         nombre = Nombre;
     }
-    void Retirar(decimal retiro)
+    public override void Retirar(decimal retiro)
     {
         if ((saldo -retiro)< -10000)
         {
@@ -36,7 +34,7 @@ class CuentaCorriente : Cuenta, ITransferible{
     {
         Console.WriteLine("transferir");
     }
-    public void Depositar(decimal Deposito)
+    public override void Depositar(decimal Deposito)
     {
         if (Deposito >0)
         {
@@ -49,7 +47,7 @@ class CuentaCorriente : Cuenta, ITransferible{
 
 class CajaAhorros : Cuenta, ITransferible{
     decimal saldo=0;
-    void Retirar(decimal retiro)
+    public override void Retirar(decimal retiro)
     {
         if (retiro <= saldo)
         {
@@ -62,7 +60,7 @@ class CajaAhorros : Cuenta, ITransferible{
     {
         Console.WriteLine("transferir");
     }
-    public void Depositar(decimal Deposito)
+    public override void Depositar(decimal Deposito)
     {
         if (Deposito >0)
         {
