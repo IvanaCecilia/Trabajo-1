@@ -5,6 +5,11 @@ public interface ITransferible
 }
 abstract class Cuenta : ITransferible
 {
+    int id=1;
+    protected Cuenta()
+    {
+        id=+1;
+    }
     public void Retirar()
     {
         Console.WriteLine("cuenta");
@@ -12,31 +17,64 @@ abstract class Cuenta : ITransferible
 }
 
 class CuentaCorriente : Cuenta, ITransferible{
-    void Retirar()
+    decimal saldo=0;
+    string nombre;
+    CuentaCorriente(string Nombre)
     {
-        Console.WriteLine("corriente");
+        nombre = Nombre;
+    }
+    void Retirar(decimal retiro)
+    {
+        if (retiro <= saldo)
+        {
+            saldo-=retiro;
+            Console.WriteLine("Saldo restante: "+saldo);
+        }
+        else Console.WriteLine("Monto insuficiente");
     }
     public void Transferir()
     {
         Console.WriteLine("transferir");
     }
-    public void Depositar()
+    public void Depositar(decimal Deposito)
     {
-        Console.WriteLine("depositar");
-    
+        if (Deposito >0)
+        {
+            saldo+=Deposito;
+            Console.WriteLine("Saldo restante: "+saldo);
+        }
+        else Console.WriteLine("Monto invalido");
     }
-
 }
+
 class CajaAhorros : Cuenta, ITransferible{
-    void Retirar()
+    decimal saldo=0;
+    void Retirar(decimal retiro)
     {
-        Console.WriteLine("ahorros");
+        if (retiro <= saldo)
+        {
+            saldo-=retiro;
+            Console.WriteLine("Saldo restante: "+saldo);
+        }
+        else Console.WriteLine("Monto insuficiente");
+    }
+    public void Transferir()
+    {
+        Console.WriteLine("transferir");
+    }
+    public void Depositar(decimal Deposito)
+    {
+        if (Deposito >0)
+        {
+            saldo+=Deposito;
+            Console.WriteLine("Saldo restante: "+saldo);
+        }
+        else Console.WriteLine("Monto invalido");
     }
 }
 
 class Banco {
     void Transferir(ITransferible cuenta)
     {
-        cuenta.Retirar();
     }
 }

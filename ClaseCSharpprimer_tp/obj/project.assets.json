@@ -8,19 +8,19 @@
     "net10.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Dario\\.nuget\\packages\\": {}
+    "C:\\Users\\matia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dario\\Documents\\Programacion C#\\TP1\\ClaseCSharpprimer_tp\\ClaseCSharpprimer_tp.csproj",
+      "projectUniqueName": "C:\\Users\\matia\\Desktop\\programacion\\tp_1\\Trabajo-1\\ClaseCSharpprimer_tp\\ClaseCSharpprimer_tp.csproj",
       "projectName": "ClaseCSharpprimer_tp",
-      "projectPath": "C:\\Users\\Dario\\Documents\\Programacion C#\\TP1\\ClaseCSharpprimer_tp\\ClaseCSharpprimer_tp.csproj",
-      "packagesPath": "C:\\Users\\Dario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dario\\Documents\\Programacion C#\\TP1\\ClaseCSharpprimer_tp\\obj\\",
+      "projectPath": "C:\\Users\\matia\\Desktop\\programacion\\tp_1\\Trabajo-1\\ClaseCSharpprimer_tp\\ClaseCSharpprimer_tp.csproj",
+      "packagesPath": "C:\\Users\\matia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\matia\\Desktop\\programacion\\tp_1\\Trabajo-1\\ClaseCSharpprimer_tp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Dario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\matia\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
