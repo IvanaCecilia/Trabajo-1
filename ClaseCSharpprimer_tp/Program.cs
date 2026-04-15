@@ -25,7 +25,7 @@ class CuentaCorriente : Cuenta, ITransferible{
     }
     void Retirar(decimal retiro)
     {
-        if (retiro <= saldo)
+        if ((saldo -retiro)< -10000)
         {
             saldo-=retiro;
             Console.WriteLine("Saldo restante: "+saldo);
