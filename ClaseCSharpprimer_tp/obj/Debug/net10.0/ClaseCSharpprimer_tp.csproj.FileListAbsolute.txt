@@ -1,0 +1,15 @@
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\ClaseCSharpprimer_tp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\ClaseCSharpprimer_tp.AssemblyInfoInputs.cache
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\ClaseCSharpprimer_tp.AssemblyInfo.cs
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\ClaseCSharpprimer_tp.csproj.CoreCompileInputs.cache
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\ClaseCSharpprimer_tp.sourcelink.json
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\bin\Debug\net10.0\ClaseCSharpprimer_tp.exe
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\bin\Debug\net10.0\ClaseCSharpprimer_tp.deps.json
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\bin\Debug\net10.0\ClaseCSharpprimer_tp.runtimeconfig.json
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\bin\Debug\net10.0\ClaseCSharpprimer_tp.dll
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\bin\Debug\net10.0\ClaseCSharpprimer_tp.pdb
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\ClaseCSharpprimer_tp.dll
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\refint\ClaseCSharpprimer_tp.dll
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\ClaseCSharpprimer_tp.pdb
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\ClaseCSharpprimer_tp.genruntimeconfig.cache
+C:\Users\matia\Desktop\programacion\tp_1\Trabajo-1\ClaseCSharpprimer_tp\obj\Debug\net10.0\ref\ClaseCSharpprimer_tp.dll

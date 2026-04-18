@@ -1,39 +1,78 @@
 ﻿// fin main
 public interface ITransferible
 {
-    public void Retirar();
+    public void Retirar(decimal retiro);
 }
 abstract class Cuenta : ITransferible
 {
-    public void Retirar()
+    int id=1;
+    protected Cuenta()
     {
-        Console.WriteLine("cuenta");
+        id=+1;
     }
+    public abstract void Retirar(decimal retiro);
+    public abstract void Depositar(decimal deposito);
 }
 
 class CuentaCorriente : Cuenta, ITransferible{
-    void Retirar()
+    decimal saldo=0;
+    public string nombre;
+    public CuentaCorriente(string Nombre)
     {
-        Console.WriteLine("corriente");
+        nombre = Nombre;
+    }
+    public override void Retirar(decimal retiro)
+    {
+        if ((saldo -retiro)< -10000)
+        {
+            saldo-=retiro;
+            Console.WriteLine("Saldo restante: "+saldo);
+        }
+        else Console.WriteLine("Monto insuficiente");
     }
     public void Transferir()
     {
         Console.WriteLine("transferir");
     }
-    public void Depositar()
+    public override void Depositar(decimal Deposito)
     {
-        Console.WriteLine("depositar");
-    
+        if (Deposito >0)
+        {
+            saldo+=Deposito;
+            Console.WriteLine("Saldo restante: "+saldo);
+        }
+        else Console.WriteLine("Monto invalido");
     }
-
 }
+
 class CajaAhorros : Cuenta, ITransferible{
-    void Retirar()
+    decimal saldo=0;
+    public override void Retirar(decimal retiro)
     {
-        Console.WriteLine("ahorros");
+        if (retiro <= saldo)
+        {
+            saldo-=retiro;
+            Console.WriteLine("Saldo restante: "+saldo);
+        }
+        else Console.WriteLine("Monto insuficiente");
+    }
+    public void Transferir()
+    {
+        Console.WriteLine("transferir");
+    }
+    public override void Depositar(decimal Deposito)
+    {
+        if (Deposito >0)
+        {
+            saldo+=Deposito;
+            Console.WriteLine("Saldo restante: "+saldo);
+        }
+        else Console.WriteLine("Monto invalido");
     }
 }
 
 class Banco {
-
+    void Transferir(ITransferible cuenta)
+    {
+    }
 }
