@@ -1,78 +1,67 @@
-﻿// fin main
-public interface ITransferible
+﻿public interface ITransferible
 {
-    public void Retirar(decimal retiro);
+    void Transferir(decimal monto, string cbuDestino);
 }
-abstract class Cuenta : ITransferible
+ 
+abstract class CuentaBancaria:Itransferible
 {
-    int id=1;
-    protected Cuenta()
+    public string CBU {get;}
+    public string TipoCuenta {get;}
+    public string Titular {get;}
+    protected decimal Saldo {get; set;}
+    // constructor
+    public CuentaBancaria(string cbu, string tipoCuenta, string titular, decimal saldoInicial)
     {
-        id=+1;
+        CBU = cbu;
+        TipoCuenta = tipoCuenta;
+        Titular = titular?? throw new ArgumentNullException(nameof(titular));
+        Saldo = saldoInicial;
     }
-    public abstract void Retirar(decimal retiro);
-    public abstract void Depositar(decimal deposito);
-}
-
-class CuentaCorriente : Cuenta, ITransferible{
-    decimal saldo=0;
-    public string nombre;
-    public CuentaCorriente(string Nombre)
+    //metodo depositar dinero
+    public void Depositar(decimal cantidad)
     {
-        nombre = Nombre;
-    }
-    public override void Retirar(decimal retiro)
-    {
-        if ((saldo -retiro)< -10000)
+        if (cantidad > 0)
         {
-            saldo-=retiro;
-            Console.WriteLine("Saldo restante: "+saldo);
+            Saldo += cantidad;
+            Console.WriteLine($"Se han depositado {cantidad} pesos. Saldo actual: {Saldo} pesos.");
         }
-        else Console.WriteLine("Monto insuficiente");
+        // metodo retirar dinero
+        public virtual void Retirar (decimal monto)
+    {
+        return Saldo -= monto;
+        Console.WriteLine($"Se han retirado {monto} pesos. Saldo actual: {Saldo} pesos.");  
+
+    }
+    // metodo transferir dinero
+    public virtual void (decimal monto, string cbuDestino)
+    
+    
+    } 
+} 
+
+class CuentaCorriente : CuentaBancaria, ITransferible{
+    void Retirar()
+    {
+        Console.WriteLine("corriente");
     }
     public void Transferir()
     {
         Console.WriteLine("transferir");
     }
-    public override void Depositar(decimal Deposito)
+    public void Depositar()
     {
-        if (Deposito >0)
-        {
-            saldo+=Deposito;
-            Console.WriteLine("Saldo restante: "+saldo);
-        }
-        else Console.WriteLine("Monto invalido");
+        Console.WriteLine("depositar");
+    
     }
-}
 
+}
 class CajaAhorros : Cuenta, ITransferible{
-    decimal saldo=0;
-    public override void Retirar(decimal retiro)
+    void Retirar()
     {
-        if (retiro <= saldo)
-        {
-            saldo-=retiro;
-            Console.WriteLine("Saldo restante: "+saldo);
-        }
-        else Console.WriteLine("Monto insuficiente");
-    }
-    public void Transferir()
-    {
-        Console.WriteLine("transferir");
-    }
-    public override void Depositar(decimal Deposito)
-    {
-        if (Deposito >0)
-        {
-            saldo+=Deposito;
-            Console.WriteLine("Saldo restante: "+saldo);
-        }
-        else Console.WriteLine("Monto invalido");
+        Console.WriteLine("ahorros");
     }
 }
 
 class Banco {
-    void Transferir(ITransferible cuenta)
-    {
-    }
+
 }
