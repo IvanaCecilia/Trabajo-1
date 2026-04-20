@@ -34,7 +34,10 @@ abstract class CuentaBancaria:ITransferible
     }
 } 
 
-class CuentaCorriente : CuentaBancaria, ITransferible{
+class CuentaCorriente : CuentaBancaria{
+    public CuentaCorriente(string cbu, string titular, decimal saldoInicial) : base(cbu, "Cuenta Corriente", titular, saldoInicial)
+    {
+    }
     public override void Retirar (decimal monto)
     {
         if (monto > 0 && monto <= Saldo)
@@ -61,8 +64,11 @@ class CuentaCorriente : CuentaBancaria, ITransferible{
         }
     }
 }
-class CajaAhorros : CuentaBancaria, ITransferible{
-    public virtual void Retirar (decimal monto)
+class CajaAhorros : CuentaBancaria{
+    public CajaAhorros(string cbu, string titular, decimal saldoInicial) : base(cbu, "Caja de Ahorros", titular, saldoInicial)
+    {
+    }
+    public override void Retirar (decimal monto)
     {
         if (monto > 0 && monto <= Saldo)
         {
@@ -75,7 +81,7 @@ class CajaAhorros : CuentaBancaria, ITransferible{
         }
 
     }
-    public void Depositar(decimal cantidad)
+    public override void Depositar(decimal cantidad)
     {
         if (cantidad > 0)
         {
