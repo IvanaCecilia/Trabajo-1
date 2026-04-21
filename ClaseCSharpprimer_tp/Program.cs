@@ -35,7 +35,7 @@ abstract class CuentaBancaria:ITransferible
 } 
 
 class CuentaCorriente : CuentaBancaria{
-    public CuentaCorriente(string cbu, string titular) : base("Cuenta Corriente", titular)
+    public CuentaCorriente(string titular) : base("Cuenta Corriente", titular)
     {
     }
     public override void Retirar(decimal retiro)
@@ -62,7 +62,7 @@ class CuentaCorriente : CuentaBancaria{
     }
 }
 class CajaAhorros : CuentaBancaria{
-    public CajaAhorros(string cbu, string titular) : base("Caja de Ahorros", titular)
+    public CajaAhorros(string titular) : base("Caja de Ahorros", titular)
     {
     }
     public override void Retirar(decimal retiro)
