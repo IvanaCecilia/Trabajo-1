@@ -5,27 +5,27 @@
  
 abstract class CuentaBancaria:ITransferible
 {
-    public string CBU {get;}
+    protected int CBU {get;}
     public string TipoCuenta {get;}
     public string Titular {get;}
-    protected decimal Saldo {get; set;}
+    protected decimal saldo {get; set;}
     // constructor
-    public CuentaBancaria(string cbu, string tipoCuenta, string titular, decimal saldoInicial)
+    public CuentaBancaria( string tipoCuenta, string titular)
     {
-        CBU = cbu;
+        CBU =+1;
         TipoCuenta = tipoCuenta;
         Titular = titular?? throw new ArgumentNullException(nameof(titular));
-        Saldo = saldoInicial;
+        saldo = 0;
     }
     public abstract void Retirar(decimal monto);
     public abstract void Depositar(decimal cantidad);
     // metodo transferir dinero
     public virtual void Transferir(decimal monto, string cbuDestino)
     {
-        if (monto > 0 && monto <= Saldo)
+        if (monto > 0 && monto <= saldo)
         {
-            Saldo -= monto;
-            Console.WriteLine($"Se han transferido {monto} pesos al CBU {cbuDestino}. Saldo actual: {Saldo} pesos.");
+            saldo -= monto;
+            Console.WriteLine($"Se han transferido {monto} pesos al CBU {cbuDestino}. Saldo actual: {saldo} pesos.");
         }
         else
         {
@@ -35,63 +35,57 @@ abstract class CuentaBancaria:ITransferible
 } 
 
 class CuentaCorriente : CuentaBancaria{
-    public CuentaCorriente(string cbu, string titular, decimal saldoInicial) : base(cbu, "Cuenta Corriente", titular, saldoInicial)
+    public CuentaCorriente(string cbu, string titular) : base("Cuenta Corriente", titular)
     {
     }
-    public override void Retirar (decimal monto)
+    public override void Retirar(decimal retiro)
     {
-        if (monto > 0 && monto <= Saldo)
+        if ((saldo -retiro)< -10000)
         {
-            Saldo -= monto;
-            Console.WriteLine($"Se han retirado {monto} pesos. Saldo actual: {Saldo} pesos.");
+            saldo-=retiro;
+            Console.WriteLine("Saldo restante: "+saldo);
         }
-        else
-        {
-            Console.WriteLine("Monto inválido o saldo insuficiente.");
-        }
-
+        else Console.WriteLine("Monto insuficiente");
     }
-    public override void Depositar(decimal cantidad)
+    public void Transferir()
     {
-        if (cantidad > 0)
+        Console.WriteLine("transferir");
+    }
+    public override void Depositar(decimal Deposito)
+    {
+        if (Deposito >0)
         {
-            Saldo += cantidad;
-            Console.WriteLine($"Se han depositado {cantidad} pesos. Saldo actual: {Saldo} pesos.");
+            saldo+=Deposito;
+            Console.WriteLine("Saldo restante: "+saldo);
         }
-        else
-        {
-            Console.WriteLine("La cantidad a depositar debe ser mayor a cero.");
-        }
+        else Console.WriteLine("Monto invalido");
     }
 }
 class CajaAhorros : CuentaBancaria{
-    public CajaAhorros(string cbu, string titular, decimal saldoInicial) : base(cbu, "Caja de Ahorros", titular, saldoInicial)
+    public CajaAhorros(string cbu, string titular) : base("Caja de Ahorros", titular)
     {
     }
-    public override void Retirar (decimal monto)
+    public override void Retirar(decimal retiro)
     {
-        if (monto > 0 && monto <= Saldo)
+        if (retiro <= saldo)
         {
-            Saldo -= monto;
-            Console.WriteLine($"Se han retirado {monto} pesos. Saldo actual: {Saldo} pesos.");
+            saldo-=retiro;
+            Console.WriteLine("Saldo restante: "+saldo);
         }
-        else
-        {
-            Console.WriteLine("Monto inválido o saldo insuficiente.");
-        }
-
+        else Console.WriteLine("Monto insuficiente");
     }
-    public override void Depositar(decimal cantidad)
+    public void Transferir()
     {
-        if (cantidad > 0)
+        Console.WriteLine("transferir");
+    }
+    public override void Depositar(decimal Deposito)
+    {
+        if (Deposito >0)
         {
-            Saldo += cantidad;
-            Console.WriteLine($"Se han depositado {cantidad} pesos. Saldo actual: {Saldo} pesos.");
+            saldo+=Deposito;
+            Console.WriteLine("Saldo restante: "+saldo);
         }
-        else
-        {
-            Console.WriteLine("La cantidad a depositar debe ser mayor a cero.");
-        }
+        else Console.WriteLine("Monto invalido");
     }
 }
 
