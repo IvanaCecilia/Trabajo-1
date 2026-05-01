@@ -1,11 +1,11 @@
 ﻿List<CuentaBancaria> cuentas = new List<CuentaBancaria>();
+cuentas.Add(new CuentaCorriente("Pepe Argento"));
+cuentas.Add(new CajaAhorros("Dardo Fuseneco"));
 int opci;
 do
 {
     Console.WriteLine("Seleccione la acción a realizar\n1) Crear nueva cuenta\n2) Realizar movimientos\n3) Mostrar cuentas\n0) Salir");
-    string? auxiliar = Console.ReadLine();
-    auxiliar ??= "-1";//para que no salte el cartel de warning
-    opci = int.TryParse(auxiliar, out int e) ? e : -1;
+    opci = (int)LeerNumero();
     Opciones (opci);
 }while(opci != 0);
 
@@ -51,14 +51,66 @@ void Opciones (int op)
             break;
         case 2:
             Console.WriteLine("Indique movimiento a realizar\n1) Deposito\n2) Retiro\n3) Transferencia\n0) Volver");
-            
+             do
+            {
+                opci2 = (int)LeerNumero();
+                int k;
+                decimal Cant;
+                switch (opci2)
+                {
+                    case 1:
+                        k = SolicitarCuenta(true);
+                        if (k > -1 && k < cuentas.Count)
+                        {
+                            Console.WriteLine("Ingrese la cantidad a depositar");
+                            Cant = LeerNumero();
+                            cuentas[k].Depositar(Cant);
+                        }
+                        else
+                        {
+                            Console.WriteLine("CBU no encontrado");
+                        }
+                        opci2 = 0;
+                        break;
+                    case 2:
+                        k = SolicitarCuenta(false);
+                        if (k > -1 && k < cuentas.Count)
+                        {
+                            Console.WriteLine("Ingrese la cantidad a retirar");
+                            Cant = LeerNumero();
+                            cuentas[k].Retirar(Cant);
+                        }
+                        else
+                        {
+                            Console.WriteLine("CBU no encontrado");
+                        }
+                        opci2 = 0;
+                        break;
+                    case 3:
+                        k = SolicitarCuenta(false);
+                        if (k > -1 && k < cuentas.Count)
+                        {
+                            int k2 = SolicitarCuenta(true);
+                            if (k2 > -1 && k2 < cuentas.Count)
+                            {
+                                Console.WriteLine("Ingrese la cantidad a transferir");
+                                Cant = LeerNumero();
+                                cuentas[k].Retirar(Cant);
+                                cuentas[k2].Depositar(Cant);
+                            }
+                        }
+                        opci2 = 0;
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        Console.WriteLine("Opción no valida, intente nuevamente.");
+                        break;
+                }
+            }while(opci2 != 0);
             break;
         case 3:
-            Console.WriteLine("Titular | Tipo Cuenta | CBU | Saldo");
-            foreach (var n in cuentas)
-            {
-                Console.WriteLine($"{n.Titular} | {n.TipoCuenta} | {n.GetCBU()} | {n.GetSaldo()}");
-            }
+            ImplimirCuentas(cuentas);
             break;
         default:
             Console.WriteLine("Opción no valida, intente nuevamente.");
@@ -66,6 +118,43 @@ void Opciones (int op)
     }
 }//Pepe Argento
 
+int SolicitarCuenta(bool o)
+{
+    string oyd = (o) ? "destino" : "origen";
+    Console.WriteLine($"Ingrese el CBU de la cuenta {oyd}");
+    int CBUsol = (int)LeerNumero();
+    return BuscarCuenta(cuentas,CBUsol);
+}
+
+void ImplimirCuentas(List<CuentaBancaria> lista)
+{
+    Console.WriteLine("Titular | Tipo Cuenta | CBU | Saldo");
+            foreach (var n in lista)
+            {
+                Console.WriteLine($"{n.Titular} | {n.TipoCuenta} | {n.GetCBU()} | {n.GetSaldo()}");
+            }
+}
+
+int BuscarCuenta (List<CuentaBancaria> lista, int ñ)
+{
+    int i = -1;
+    foreach (var item in lista)
+    {
+        if (item.CBU == ñ)
+        {
+            i = lista.IndexOf(item);
+            continue;
+        }
+    }
+    return i;
+}
+
+decimal LeerNumero()
+{
+    string? auxiliar = Console.ReadLine();
+    auxiliar ??= "-1";//para que no salte el cartel de warning
+    return decimal.TryParse(auxiliar, out decimal e) ? e : -1;
+}
 //fin de main
 public interface ITransferible
 {
@@ -76,7 +165,7 @@ abstract class CuentaBancaria:ITransferible
 {
     static int Cont = 1;
 
-    protected int CBU;
+    public int CBU {get ; init;}
     public string TipoCuenta {get;}
     public string Titular {get;}
     protected decimal saldo {get; set;}
@@ -89,7 +178,15 @@ abstract class CuentaBancaria:ITransferible
         saldo = 0;
     }
     public abstract void Retirar(decimal monto);
-    public abstract void Depositar(decimal cantidad);
+    public void Depositar(decimal deposito)
+    {
+        if (deposito >0)
+        {
+            saldo+=deposito;
+            Console.WriteLine("Saldo actual: "+saldo);
+        }
+        else {Console.WriteLine("Monto invalido");}
+    }
 
     public void Transferir(decimal monto, string cbuDestino)
     {
@@ -111,26 +208,18 @@ class CuentaCorriente : CuentaBancaria{
     }
     public override void Retirar(decimal retiro)
     {
-        if ((saldo -retiro)< -10000)
+        if ((saldo -retiro)> -10000)
         {
             saldo-=retiro;
             Console.WriteLine("Saldo restante: "+saldo);
         }
-        else Console.WriteLine("Monto insuficiente");
+        else{Console.WriteLine("Saldo insuficiente");}
     }
     public void Transferir()
     {
         Console.WriteLine("transferir");
     }
-    public override void Depositar(decimal Deposito)
-    {
-        if (Deposito >0)
-        {
-            saldo+=Deposito;
-            Console.WriteLine("Saldo restante: "+saldo);
-        }
-        else Console.WriteLine("Monto invalido");
-    }
+    
 }
 class CajaAhorros : CuentaBancaria{
     public CajaAhorros(string titular) : base("CA", titular)
@@ -143,20 +232,11 @@ class CajaAhorros : CuentaBancaria{
             saldo-=retiro;
             Console.WriteLine("Saldo restante: "+saldo);
         }
-        else Console.WriteLine("Monto insuficiente");
+        else {Console.WriteLine("Saldo insuficiente");}
     }
     public void Transferir()
     {
         Console.WriteLine("transferir");
-    }
-    public override void Depositar(decimal Deposito)
-    {
-        if (Deposito >0)
-        {
-            saldo+=Deposito;
-            Console.WriteLine("Saldo restante: "+saldo);
-        }
-        else Console.WriteLine("Monto invalido");
     }
 }
 //comentario de prueba
