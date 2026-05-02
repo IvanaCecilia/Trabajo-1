@@ -1,0 +1,15 @@
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\bin\MCD\Debug\net10.0\ClaseCSharpprimer_tp.exe
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\bin\MCD\Debug\net10.0\ClaseCSharpprimer_tp.deps.json
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\bin\MCD\Debug\net10.0\ClaseCSharpprimer_tp.runtimeconfig.json
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\bin\MCD\Debug\net10.0\ClaseCSharpprimer_tp.dll
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\bin\MCD\Debug\net10.0\ClaseCSharpprimer_tp.pdb
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\ClaseCSharpprimer_tp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\ClaseCSharpprimer_tp.AssemblyInfoInputs.cache
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\ClaseCSharpprimer_tp.AssemblyInfo.cs
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\ClaseCSharpprimer_tp.csproj.CoreCompileInputs.cache
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\ClaseCSharpprimer_tp.sourcelink.json
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\ClaseCSharpprimer_tp.dll
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\refint\ClaseCSharpprimer_tp.dll
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\ClaseCSharpprimer_tp.pdb
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\ClaseCSharpprimer_tp.genruntimeconfig.cache
+C:\Users\IVANA\Desktop\GIT 1\ClaseCSharpprimer_tp\obj\MCD\Debug\net10.0\ref\ClaseCSharpprimer_tp.dll
