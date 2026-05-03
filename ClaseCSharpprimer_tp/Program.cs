@@ -95,8 +95,14 @@ void Opciones (int op)
                             {
                                 Console.WriteLine("Ingrese la cantidad a transferir");
                                 Cant = LeerNumero();
+                                if (cuentas[k].Transferir(Cant)){
                                 cuentas[k].Retirar(Cant);
-                                cuentas[k2].Depositar(Cant);
+                                    cuentas[k2].Depositar(Cant);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("La cuenta de origen no posee fondos suficientes para realizar esta acción");
+                                }
                             }
                         }
                         opci2 = 0;
