@@ -182,18 +182,8 @@ abstract class CuentaBancaria:ITransferible
         Titular = titular;
         saldo = 0;
     }
-    public void Retirar(decimal monto)
-    {
-        if (Transferir(monto))
-        {
-         saldo-=monto;
-         Console.WriteLine("Saldo restante: "+saldo);   
-        
-        }else
-        {
-            Console.WriteLine("Saldo insuficiente");
-        }
-    }
+    public abstract void Retirar(decimal monto);
+    
     public void Depositar(decimal deposito)
     {
         if (deposito >0)
@@ -222,7 +212,18 @@ class CuentaCorriente : CuentaBancaria{
     public CuentaCorriente(string titular) : base("CC", titular)
     {
     }
-   
+    public override void Retirar(decimal monto)
+    {
+        if (Transferir(monto))
+        {
+         saldo-=monto;
+         Console.WriteLine("Saldo restante: "+saldo);   
+        
+        }else
+        {
+            Console.WriteLine("Saldo insuficiente");
+        }
+    }
     public override bool Transferir(decimal monto)
     {
     
@@ -235,7 +236,18 @@ class CajaAhorros : CuentaBancaria{
     public CajaAhorros(string titular) : base("CA", titular)
     {
     }
-    
+    public override void Retirar(decimal monto)
+    {
+        if (Transferir(monto))
+        {
+         saldo-=monto;
+         Console.WriteLine("Saldo restante: "+saldo);   
+        
+        }else
+        {
+            Console.WriteLine("Saldo insuficiente");
+        }
+    }
     public override bool Transferir(decimal monto)
     {
     return (saldo - monto >= 0) ? true : false;
