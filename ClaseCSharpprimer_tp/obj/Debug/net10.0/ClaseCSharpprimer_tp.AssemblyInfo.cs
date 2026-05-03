@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClaseCSharpprimer_tp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1930d2592821ac93327d4dd375f9834250a8f8cb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e59c32136e094bd1cf59fd38e4ec1fa82c5a3fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClaseCSharpprimer_tp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClaseCSharpprimer_tp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
