@@ -173,7 +173,8 @@ abstract class CuentaBancaria:ITransferible
     public string TipoCuenta {get;}
     public string Titular {get;}
     protected decimal saldo {get; set;}
-    // constructor
+    /*Creacion de cuenta, el CBU se asigna automaticamente y es unico para cada cuenta 
+    creada ademas de su saldo ser inicializado en 0*/
     public CuentaBancaria( string tipoCuenta, string titular)
     {
         CBU = Cont++;
@@ -217,6 +218,7 @@ abstract class CuentaBancaria:ITransferible
 }
 
 class CuentaCorriente : CuentaBancaria{
+    //se pide titular para saber quien tendra la cuenta y se crea gracias a la herencia
     public CuentaCorriente(string titular) : base("CC", titular)
     {
     }
@@ -229,6 +231,7 @@ class CuentaCorriente : CuentaBancaria{
     
 }
 class CajaAhorros : CuentaBancaria{
+    //se repite lo anterior y se cambia el tipo de cuenta.
     public CajaAhorros(string titular) : base("CA", titular)
     {
     }
@@ -238,4 +241,3 @@ class CajaAhorros : CuentaBancaria{
     return (saldo - monto >= 0) ? true : false;
     }
 }
-//comentario de prueba
