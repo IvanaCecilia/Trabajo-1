@@ -30,9 +30,7 @@ void Opciones (int op)
             Console.WriteLine("Indique el tipo de cuenta\n1) Cuenta Corriente\n2) Caja de Ahorros\n0) Volver");
             do
             {
-                string? auxiliar = Console.ReadLine();
-                auxiliar ??= "-1";//para que no salte el cartel de warning
-                opci2 = int.TryParse(auxiliar, out int e) ? e : -1; 
+                opci2 = (int)LeerNumero(); 
                 switch (opci2)
                 {
                     case 1:
