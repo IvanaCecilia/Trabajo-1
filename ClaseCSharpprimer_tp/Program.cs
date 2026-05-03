@@ -164,7 +164,7 @@ decimal LeerNumero()
 //fin de main
 public interface ITransferible
 {
-    void Transferir(decimal monto, string cbuDestino);
+bool Transferir(decimal monto);
 }
  
 abstract class CuentaBancaria:ITransferible
@@ -183,7 +183,18 @@ abstract class CuentaBancaria:ITransferible
         Titular = titular;
         saldo = 0;
     }
-    public abstract void Retirar(decimal monto);
+    public void Retirar(decimal monto)
+    {
+        if (Transferir(monto))
+        {
+         saldo-=monto;
+         Console.WriteLine("Saldo restante: "+saldo);   
+        
+        }else
+        {
+            Console.WriteLine("Saldo insuficiente");
+        }
+    }
     public void Depositar(decimal deposito)
     {
         if (deposito >0)
@@ -194,10 +205,9 @@ abstract class CuentaBancaria:ITransferible
         else {Console.WriteLine("Monto invalido");}
     }
 
-    public void Transferir(decimal monto, string cbuDestino)
-    {
-        
-    }
+    public abstract bool Transferir(decimal monto);
+    
+    
     public int GetCBU()
     {
         return CBU;
@@ -212,18 +222,11 @@ class CuentaCorriente : CuentaBancaria{
     public CuentaCorriente(string titular) : base("CC", titular)
     {
     }
-    public override void Retirar(decimal retiro)
+   
+    public override bool Transferir(decimal monto)
     {
-        if ((saldo -retiro)> -10000)
-        {
-            saldo-=retiro;
-            Console.WriteLine("Saldo restante: "+saldo);
-        }
-        else{Console.WriteLine("Saldo insuficiente");}
-    }
-    public void Transferir()
-    {
-        Console.WriteLine("transferir");
+    
+        return (saldo - monto >= -10000) ? true : false;
     }
     
 }
@@ -231,18 +234,10 @@ class CajaAhorros : CuentaBancaria{
     public CajaAhorros(string titular) : base("CA", titular)
     {
     }
-    public override void Retirar(decimal retiro)
+    
+    public override bool Transferir(decimal monto)
     {
-        if (retiro <= saldo)
-        {
-            saldo-=retiro;
-            Console.WriteLine("Saldo restante: "+saldo);
-        }
-        else {Console.WriteLine("Saldo insuficiente");}
-    }
-    public void Transferir()
-    {
-        Console.WriteLine("transferir");
+    return (saldo - monto >= 0) ? true : false;
     }
 }
 //comentario de prueba
